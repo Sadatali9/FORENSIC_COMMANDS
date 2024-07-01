@@ -1,7 +1,5 @@
 # FORENSIC_COMMANDS
-Here is a rewritten version of the README file with additional commands and descriptions:
 
-# Forensics
 
 ### Tools used for solving Forensics challenges
 
@@ -133,3 +131,146 @@ Here is a rewritten version of the README file with additional commands and desc
 > $ ssh -i id_rsa <Username>@<IP-Address>
    :Enter the Password Cracked 
 ```
+
+
+### Disk Image Analysis
+
+* Mount disk images to examine contents:
+```bash
+> $ sudo mount -o loop <DISK_IMAGE> /mnt
+```
+
+* Analyze disk images using Autopsy, a graphical forensic tool:
+```bash
+> $ autopsy
+```
+
+* Use `sleuthkit` to analyze file systems:
+```bash
+> $ fls -r <DISK_IMAGE>
+> $ icat <DISK_IMAGE> <INODE>
+```
+
+### Log File Analysis
+
+* Analyze Windows event logs:
+```bash
+> $ log2timeline.py <OUTPUT_FILE> <SOURCE>
+> $ psort.py -o l2tcsv <OUTPUT_FILE>
+```
+
+* Check Linux log files:
+```bash
+> $ cat /var/log/auth.log
+> $ cat /var/log/syslog
+```
+
+### PDF Analysis
+
+* Extract embedded files from a PDF:
+```bash
+> $ pdfdetach -saveall <PDF_FILE>
+```
+
+* Analyze PDF structure and content:
+```bash
+> $ pdfid.py <PDF_FILE>
+> $ pdf-parser.py <PDF_FILE>
+```
+
+### Steganography
+
+* Analyze and extract hidden data in audio files:
+```bash
+> $ steghide extract -sf <AUDIO_FILE>
+> $ stegsnow <INPUT_FILE>
+```
+
+* Use `stegsolve` to analyze image files:
+```bash
+> $ java -jar stegsolve.jar
+```
+
+### File System Analysis
+
+* Examine EXT file systems:
+```bash
+> $ extundelete <DISK_IMAGE> --restore-all
+```
+
+* Check for deleted files on NTFS file systems:
+```bash
+> $ ntfsundelete <DISK_IMAGE>
+```
+
+### Hex Editors
+
+* Use `xxd` to create a hex dump:
+```bash
+> $ xxd <FILE_NAME>
+```
+
+* Edit binary files with `bless`, a GUI hex editor:
+```bash
+> $ bless <FILE_NAME>
+```
+
+### Memory Forensics
+
+* Analyze Windows memory dumps:
+```bash
+> $ volatility -f <MEMORY_DUMP> --profile=<PROFILE> pslist
+> $ volatility -f <MEMORY_DUMP> --profile=<PROFILE> memdump -D <OUTPUT_DIR>
+```
+
+### Network Traffic Analysis
+
+* Extract files from PCAP files:
+```bash
+> $ tcpflow -r <PCAP_FILE>
+> $ tcpextract -d <PCAP_FILE>
+```
+
+* Analyze HTTP traffic:
+```bash
+> $ tshark -r <PCAP_FILE> -Y 'http.request'
+```
+
+### Browser Forensics
+
+* Analyze browser artifacts using `browser_history`:
+```bash
+> $ browser-history -b chrome history
+```
+
+### Email Analysis
+
+* Analyze email files (PST, OST):
+```bash
+> $ readpst -r -o <OUTPUT_DIR> <EMAIL_FILE>
+```
+
+### Document Analysis
+
+* Extract metadata from Office documents:
+```bash
+> $ oletools
+> $ olevba <DOC_FILE>
+```
+
+### Miscellaneous
+
+* Recover deleted files using `testdisk`:
+```bash
+> $ testdisk <DISK_IMAGE>
+```
+
+* Analyze SQLite databases:
+```bash
+> $ sqlitebrowser <DB_FILE>
+```
+
+These commands cover a broad range of tools and techniques used in forensic analysis for CTF challenges.
+```
+
+Feel free to copy this content into your README.md file for your project!
